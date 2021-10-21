@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class JsonService {
 
-  
+  URL=environment.API_URL
 
   constructor(private _http: HttpClient) {
     console.log('Posts Service Init...');
@@ -20,6 +20,10 @@ export class JsonService {
 
   createPost(post:any){
     return this._http.post<Post>('https://jsonplaceholder.typicode.com/posts',JSON.stringify(post))
+  }
+
+  deletePost(id:any){
+    return this._http.delete('https://jsonplaceholder.typicode.com/posts'+id)
   }
 
 }
